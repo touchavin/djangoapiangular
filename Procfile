@@ -1,1 +1,1 @@
-web: gunicorn DjangoAPI.wsgi --access-logfile -
+web: gunicorn DjangoAPI.wsgi
