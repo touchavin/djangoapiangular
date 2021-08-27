@@ -12,13 +12,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -88,10 +89,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dc5apigtdn898d',
-        'USER': 'zvnqjoxhgesdhs',
-        'PASSWORD': 'de1baa02b1527dbf71a2e0d7eccc449222fbb1c1571981ce5abe85562b26e2a2',
-        'HOST': 'ec2-54-156-151-232.compute-1.amazonaws.com',
+        'NAME': 'testangular',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        # 'HOST': 'ec2-35-170-85-206.compute-1.amazonaws.com',
         'PORT': '5432',
 
 
@@ -165,8 +166,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
