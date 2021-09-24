@@ -12,8 +12,13 @@ class EmployeesAdmin(admin.ModelAdmin):
     search_fields = ['EmployeeId', 'EmployeeName']
 
 
+
+
+
 admin.site.register(Departments, DepartmentsAdmin)
 admin.site.register(Employees, EmployeesAdmin)
+
+
 
 
 

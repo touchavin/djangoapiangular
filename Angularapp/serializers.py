@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from Angularapp.models import Departments, Employees
+from Angularapp.models import Departments, Employees, User
+from django.contrib.auth.models import User
+
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +17,13 @@ class EmployeeSerializer(serializers.ModelSerializer):
                   'Department',
                   'DateOfJoining',
                   'PhotoFileName')
+
+# User Serializer
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('Userid', 
+                  'Username', 
+                  'Email',
+                  'Password')
+

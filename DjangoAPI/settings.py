@@ -18,8 +18,7 @@ import os
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'Angularapp',
     'rest_framework',
     'corsheaders',
+    'knox',
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -145,7 +145,10 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
     ]
 }
 CORS_ORIGIN_ALLOW_ALL = True
@@ -155,7 +158,8 @@ CORS_ORIGIN_WHITELIST = (
        'http://localhost:4200',
 )
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

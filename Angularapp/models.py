@@ -2,6 +2,13 @@ from django.db import models
 from django.utils.html import format_html
 # Create your models here.
 
+
+class User(models.Model):
+    Userid = models.AutoField(primary_key=True)
+    username=models.CharField(max_length=100, blank=True, null=True)
+    email=models.EmailField(max_length=100, blank=True, null=True)
+    password=models.CharField(max_length=50)
+
 class Departments(models.Model):
     DepartmentId = models.AutoField(primary_key=True)
     DepartmentName = models.CharField(max_length=100)
